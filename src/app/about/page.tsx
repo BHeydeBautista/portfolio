@@ -1,20 +1,23 @@
 export default function AboutPage() {
   return (
-    <section className="space-y-4">
-      <h1 className="text-3xl font-bold">Sobre mí</h1>
-      <p>
-        Soy un desarrollador fullstack argentino con experiencia en desarrollo web usando tecnologías como Next.js, NestJS, PostgreSQL, TypeORM y JWT. Actualmente me sigo capacitando mientras desarrollo proyectos personales y colaborativos.
+    <section className="space-y-6">
+      <h1 className="text-4xl font-bold text-blue-700">Sobre mí</h1>
+      <p className="text-gray-700 text-lg leading-relaxed">
+        ¡Hola! Soy <strong>[Tu Nombre]</strong>, un desarrollador Full Stack apasionado por la tecnología y la construcción de soluciones web modernas.
       </p>
-      <p>
-        Me destaco por mi compromiso, habilidades comunicativas y capacidad para resolver problemas técnicos en equipo.
+      <p className="text-gray-700 text-lg leading-relaxed">
+        Me especializo en tecnologías como <span className="font-semibold">JavaScript, TypeScript, React, Node.js</span> y herramientas modernas como Next.js, Tailwind CSS y más.
       </p>
-
-      <h2 className="text-2xl font-semibold mt-6">Tecnologías</h2>
-      <ul className="flex flex-wrap gap-3 mt-2 text-sm">
-        {['Next.js', 'NestJS', 'PostgreSQL', 'TypeScript', 'Tailwind CSS', 'JWT', 'React', 'TypeORM'].map((tech) => (
-          <li key={tech} className="bg-gray-200 px-3 py-1 rounded-full">{tech}</li>
-        ))}
-      </ul>
+      <p className="text-gray-700 text-lg leading-relaxed">
+        Disfruto trabajar en equipo, aprender nuevas herramientas y enfrentar desafíos que me ayuden a crecer profesionalmente.
+      </p>
+      <a
+        href="/cv.pdf"
+        target="_blank"
+        className="inline-block mt-4 bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition"
+      >
+        Descargar CV
+      </a>
     </section>
-  )
+  );
 }

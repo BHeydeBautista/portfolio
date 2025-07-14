@@ -1,13 +1,12 @@
-import "./globals.css"
-import { Inter } from "next/font/google"
-import type { Metadata } from "next"
+import './globals.css'
+import { Inter } from 'next/font/google'
+import { ThemeProvider } from 'next-themes'
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  title: "Bautista Heyde | Full Stack Developer",
-  description:
-    "Portfolio profesional de Bautista Heyde, desarrollador especializado en NestJS, PostgreSQL, React y diseño UX.",
+export const metadata = {
+  title: 'Bautista Heyde',
+  description: 'Developer, Engineer, Explorer of scalable technologies',
 }
 
 export default function RootLayout({
@@ -16,9 +15,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <body className={inter.className}>
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true}>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -1,14 +1,24 @@
-"use client";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { TypeAnimation } from "react-type-animation";
+'use client'
+import { motion } from 'framer-motion'
+import Image from 'next/image'
+import { TypeAnimation } from 'react-type-animation'
+import { useTheme } from 'next-themes'
 
 export default function SpaceHero() {
+  const { theme } = useTheme()
+
+  const backgroundImage =
+    theme === 'light' ? "/img/starswhite.jpg" : "/img/stars.jpg"
+
   return (
-    <section className="relative h-screen bg-gradient-to-b from-slate-950 to-slate-900 overflow-hidden flex items-center justify-center text-white">
+    <section className="relative h-screen bg-gradient-to-b from-white dark:from-slate-950 to-white dark:to-slate-900 overflow-hidden flex items-center justify-center text-slate-900 dark:text-white">
       {/* Fondo estelar */}
-      <div className="absolute inset-0 bg-[url('/stars.jpg')] bg-cover opacity-[0.70]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 to-slate-900/90" />
+      <div
+        className="absolute inset-0 bg-cover opacity-[0.70]"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      />
+      {/* Gradiente de overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/80 dark:from-slate-950/80 to-white/90 dark:to-slate-900/90" />
 
       {/* Astronauta flotando */}
       <motion.div
@@ -17,17 +27,39 @@ export default function SpaceHero() {
         transition={{
           repeat: Infinity,
           duration: 4,
-          ease: "easeInOut",
-          repeatType: "reverse",
+          ease: 'easeInOut',
+          repeatType: 'reverse',
         }}
         className="absolute top-24 right-2 md:right-16 w-[280px] md:w-[540px] z-20 drop-shadow-xl"
       >
         <Image
-          src="/astronaut.png"
+          src="/img/astronaut.png"
           alt="Astronauta flotando"
           width={540}
           height={540}
           priority
+        />
+      </motion.div>
+
+      {/* Avatar flotante */}
+      <motion.div
+        initial={{ y: -10 }}
+        animate={{ y: 10 }}
+        transition={{
+          repeat: Infinity,
+          duration: 4,
+          ease: 'easeInOut',
+          repeatType: 'reverse',
+        }}
+        className="absolute top-24 left-2 md:left-16 w-[180px] md:w-[240px] z-20 drop-shadow-xl"
+      >
+        <Image
+          src="/img/perfil.jpg"
+          alt="Avatar de Bautista"
+          width={240}
+          height={240}
+          priority
+          className="rounded-full border-4 border-yellow-400 shadow-md object-cover"
         />
       </motion.div>
 
@@ -43,30 +75,25 @@ export default function SpaceHero() {
           Bautista Heyde
         </h1>
 
-        {/* Animación de texto */}
         <TypeAnimation
           sequence={[
-            "Full Stack Developer",
+            'Full Stack Developer',
             2000,
-            "Estudiante de Ingeniería en Informática",
+            'Information Systems Engineering Student',
             2000,
-            "Apasionado por el diseño y la tecnología",
+            'Crafting scalable digital solutions',
             2000,
           ]}
           wrapper="span"
           speed={50}
           repeat={Infinity}
-          className="text-lg md:text-2xl text-slate-300 font-medium block mb-6"
+          className="text-lg md:text-2xl text-slate-700 dark:text-slate-300 font-medium block mb-6"
         />
 
-        {/* Presentación */}
-        <p className="text-slate-300 text-base md:text-lg leading-relaxed max-w-lg">
-          Soy un Desarrollador Full Stack con formación en Ingeniería en
-          Informática y una fuerte vocación por la tecnología. Me destaco por mi
-          capacidad para trabajar en equipo, adaptarme a nuevos desafíos y
-          consolidar proyectos web con compromiso, responsabilidad y entusiasmo.
+        <p className="text-slate-700 dark:text-slate-300 text-base md:text-lg leading-relaxed max-w-lg">
+          I’m a Full Stack Developer and Engineering student passionate about blending technology, design, and precision. I adapt quickly, thrive in collaborative environments, and craft web experiences with dedication and impact.
         </p>
       </motion.div>
     </section>
-  );
+  )
 }

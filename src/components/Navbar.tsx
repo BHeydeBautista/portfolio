@@ -1,54 +1,34 @@
 'use client'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
-import DarkModeToggle from './DarkModeToggle'
+import Link from 'next/link'
 
 const navItems = [
-  { href: '/', label: 'Inicio' },
-  { href: '/about', label: 'Sobre mí' },
-  { href: '/projects', label: 'Proyectos' },
-  { href: '/contact', label: 'Contacto' },
+  { label: 'Inicio', href: '#' },
+  { label: 'Sobre mí', href: '#about' },
+  { label: 'Proyectos', href: '#projects' },
+  { label: 'Contacto', href: '#contact' },
 ]
 
 export default function Navbar() {
-  const pathname = usePathname()
-
   return (
     <motion.nav
-      className="w-full py-4 px-6 shadow bg-white dark:bg-gray-900 sticky top-0 z-50 transition-colors"
-      initial={{ y: -20, opacity: 0 }}
+      initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.5 }}
+      className="fixed top-0 w-full bg-slate-950 backdrop-blur-lg z-50 px-4 py-3 flex justify-between items-center border-b border-slate-800"
     >
-      <div className="relative flex items-center justify-center">
-        <ul className="flex gap-6 justify-center font-medium">
-          {navItems.map(({ href, label }) => {
-            const isActive = pathname === href
-            return (
-              <motion.li
-                key={href}
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <Link
-                  href={href}
-                  className={`transition-colors duration-300 ${
-                    isActive
-                      ? 'text-accent dark:text-blue-400 font-semibold'
-                      : 'text-gray-700 dark:text-gray-200 hover:text-accent dark:hover:text-blue-400'
-                  }`}
-                >
-                  {label}
-                </Link>
-              </motion.li>
-            )
-          })}
-        </ul>
-        <div className="absolute right-0 top-0">
-          <DarkModeToggle />
-        </div>
-      </div>
+      <h2 className="text-white font-bold text-xl">Bautista</h2>
+      <ul className="flex gap-6 text-white text-sm font-medium">
+        {navItems.map((item, i) => (
+          <li key={i}>
+            <Link href={item.href} scroll={false}>
+              <span className="hover:text-yellow-400 transition-colors cursor-pointer">
+                {item.label}
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </motion.nav>
   )
 }

@@ -20,7 +20,7 @@ export default function SpaceHero() {
       {/* Gradiente de overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/80 dark:from-slate-950/80 to-white/90 dark:to-slate-900/90" />
 
-      {/* Astronauta flotando */}
+      {/* Astronauta flotante */}
       <motion.div
         initial={{ y: -20 }}
         animate={{ y: 20 }}
@@ -30,8 +30,8 @@ export default function SpaceHero() {
           ease: "easeInOut",
           repeatType: "reverse",
         }}
-        className="absolute top-[15%] right-[5%] lg:right-[10%] z-20 drop-shadow-xl"
-        style={{ width: "clamp(200px, 30vw, 400px)" }}
+        className="absolute top-[12%] right-[5%] lg:right-[10%] z-20"
+        style={{ width: "clamp(180px, 30vw, 400px)" }}
       >
         <Image
           src="/img/astronaut.png"
@@ -52,7 +52,7 @@ export default function SpaceHero() {
           ease: "easeInOut",
           repeatType: "reverse",
         }}
-        className="absolute top-[15%] left-[5%] lg:left-[10%] z-20 drop-shadow-xl"
+        className="absolute top-[12%] left-[5%] lg:left-[10%] z-20"
         style={{ width: "clamp(140px, 20vw, 240px)" }}
       >
         <Image
@@ -70,7 +70,7 @@ export default function SpaceHero() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="z-30 px-6 max-w-2xl w-full text-left flex flex-col items-start justify-center"
+        className="z-30 px-6 w-full max-w-2xl text-left flex flex-col items-start justify-center"
       >
         <h2 className="text-xl md:text-2xl text-yellow-400 mb-2">¡Hola! Soy</h2>
         <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-4">
@@ -81,7 +81,7 @@ export default function SpaceHero() {
           sequence={[
             "Desarrollador Full Stack",
             2000,
-            "Estudiante de Ingeniería en Sistemas",
+            "Estudiante de Ingeniería en Informática",
             2000,
             "Creando soluciones digitales escalables",
             2000,

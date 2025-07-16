@@ -3,20 +3,63 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function SpaceHero() {
   const { theme } = useTheme();
+  const [showStar, setShowStar] = useState(false);
+  const [windowSize, setWindowSize] = useState({ width: 1280, height: 800 });
+
+  useEffect(() => {
+    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+
+    const interval = setInterval(() => {
+      setShowStar(true);
+      setTimeout(() => setShowStar(false), 2500); 
+    }, 8000); 
+
+    return () => clearInterval(interval);
+  }, []);
 
   const backgroundImage =
     theme === "light" ? "/img/starswhite.jpg" : "/img/stars.jpg";
 
   return (
     <section className="relative min-h-[100dvh] bg-gradient-to-b from-white dark:from-slate-950 to-white dark:to-slate-900 overflow-hidden flex items-center justify-center text-slate-900 dark:text-white">
+      {/* Estrella fugaz */}
+      {showStar && (
+        <motion.div
+          initial={{
+            x: windowSize.width + 100,
+            y: windowSize.height * 0.000001, 
+          }}
+          animate={{
+            x: -200,
+            y: windowSize.height * 0.8, 
+            opacity: 1,
+          }}
+          transition={{ duration: 2.4, ease: "easeOut" }}
+          className="fixed z-50 pointer-events-none"
+          style={{
+            width: "4px",
+            height: "4px",
+            borderRadius: "50%",
+            background: "white",
+            boxShadow: "0 0 120px 40px white",
+            filter: "drop-shadow(0 0 90px white)",
+            rotate: "45deg",
+          }}
+        />
+      )}
+
       {/* Fondo estelar */}
       <div
-        className="absolute inset-0 bg-cover opacity-70"
+        className={`absolute inset-0 bg-gradient-to-b from-white/80 dark:from-slate-950/80 to-white/90 dark:to-slate-900/90 transition duration-700 ${
+          showStar ? "brightness-[1.9] contrast-[1.2]" : ""
+        }`}
         style={{ backgroundImage: `url(${backgroundImage})` }}
       />
+
       {/* Gradiente de overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/80 dark:from-slate-950/80 to-white/90 dark:to-slate-900/90" />
 

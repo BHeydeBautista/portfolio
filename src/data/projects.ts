@@ -55,4 +55,24 @@ export const projects = [
     link: '',
     repo: 'https://github.com/BHeydeBautista/Moro-Abogados',
   },
+  {
+    title: 'Ecommerce M4 Proyecto Integrador — Backend API',
+    description:
+      'API robusta desarrollada con NestJS y PostgreSQL, orientada a ofrecer una arquitectura escalable y segura. Integra autentificación, sockets, gestión de archivos, documentación Swagger y comunicación vía email.',
+    image: '/projects/serviciolibreback.jpg',
+    stackName: 'NestJS + PostgreSQL',
+    stack: [
+      SiNestjs,
+      SiTypescript,
+      SiPostgresql,
+      SiTypeorm,
+      SiSocketdotio,
+      SiCloudinary,
+      SiJsonwebtokens,
+      SiSwagger,
+      SiMinutemailer,
+    ],
+    link: '',
+    repo: 'https://github.com/BHeydeBautista/Modulo-4-Henry-PI',
+  }
 ]

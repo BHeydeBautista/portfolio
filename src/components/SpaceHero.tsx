@@ -102,7 +102,7 @@ export default function SpaceHero() {
           src="/img/perfil.jpg"
           alt="Avatar de Bautista"
           width={240}
-          height={240}
+          height={241}
           priority
           className="rounded-full border-4 border-yellow-400 shadow-md object-cover"
         />

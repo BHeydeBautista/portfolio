@@ -107,13 +107,13 @@ export default function SpaceHero() {
 
               {/* Descripción */}
               <p className="text-sm md:text-base text-white/80 leading-relaxed mb-6 max-w-md font-medium">
-                Enhancing digital experiences that are smooth, scalable, and
-                made to impress.
+                Mejorando experiencias digitales que sean fluidas, escalables y
+                diseñadas para impresionar.
               </p>
 
               {/* Tech stack badges */}
               <div className="flex flex-wrap gap-3 mb-6">
-                {["React", "Next.js", "NestJS", "PostgreSQL"].map((tech) => (
+                {["React", "Next.js", "NestJS", "PostgreSQL", "otras más abajo"].map((tech) => (
                   <span
                     key={tech}
                     className="px-4 py-1 rounded-full bg-white/10 text-white/80 text-sm font-medium backdrop-blur-sm border border-white/20"
@@ -126,16 +126,16 @@ export default function SpaceHero() {
               {/* Botones */}
               <div className="flex gap-4">
                 <a
-                  href="#projects"
+                  href="#PortfolioShowcase"
                   className="px-5 py-2 rounded-md font-semibold text-sm bg-[#0f172a] text-white shadow-[0_0_15px_#a855f7] hover:bg-[#a855f7]/20 transition"
                 >
-                  Projects
+                  Proyectos
                 </a>
                 <a
-                  href="#contact"
+                  href="#Contact"
                   className="px-5 py-2 rounded-md font-semibold text-sm border border-white/30 text-white/80 hover:bg-white/10 transition"
                 >
-                  Contact
+                  Contacto
                 </a>
               </div>
             </motion.div>

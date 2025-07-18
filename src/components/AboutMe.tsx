@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Download, FileText } from "lucide-react";
+import { Download } from "lucide-react";
 import { Code2, GraduationCap, Globe } from "lucide-react";
 
 export default function AboutMe() {
@@ -48,28 +48,28 @@ export default function AboutMe() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 px-4">
               {/* Total Projects */}
               <a
-                href="/projects"
+                href="#PortfolioShowcase"
                 className="group bg-slate-800 hover:bg-slate-700 transition-colors duration-300 rounded-xl p-6 shadow-lg flex flex-col items-center text-center gap-4 border border-slate-700 hover:border-purple-500"
               >
                 <div className="bg-purple-500/20 p-4 rounded-full text-purple-400">
                   <Code2 size={32} />
                 </div>
                 <p className="text-4xl font-bold text-white">4</p>
-                <p className="text-sm text-slate-400">Total Projects</p>
+                <p className="text-sm text-slate-400">Proyecto Totales</p>
                 <p className="text-xs text-slate-500">Web & Mobile crafted</p>
               </a>
 
               {/* Certificates */}
               <a
-                href="/certificates"
+                href="#PortfolioShowcase"
                 className="group bg-slate-800 hover:bg-slate-700 transition-colors duration-300 rounded-xl p-6 shadow-lg flex flex-col items-center text-center gap-4 border border-slate-700 hover:border-purple-500"
               >
                 <div className="bg-purple-500/20 p-4 rounded-full text-purple-400">
                   <GraduationCap size={32} />
                 </div>
                 <p className="text-4xl font-bold text-white">3</p>
-                <p className="text-sm text-slate-400">Certificates</p>
-                <p className="text-xs text-slate-500">Skills validated</p>
+                <p className="text-sm text-slate-400">Certificados</p>
+                <p className="text-xs text-slate-500">Skills validadas</p>
               </a>
 
               {/* Experience */}
@@ -81,8 +81,8 @@ export default function AboutMe() {
                   <Globe size={32} />
                 </div>
                 <p className="text-4xl font-bold text-white">2</p>
-                <p className="text-sm text-slate-400">Years of Experience</p>
-                <p className="text-xs text-slate-500">Continuous journey</p>
+                <p className="text-sm text-slate-400">Años y Experiencia</p>
+                <p className="text-xs text-slate-500">Viaje Continuo</p>
               </a>
             </div>
           </div>
@@ -145,16 +145,6 @@ export default function AboutMe() {
               className="flex items-center gap-2 px-6 py-3 rounded bg-purple-600 hover:bg-purple-700 text-white font-semibold shadow-lg"
             >
               <Download size={18} /> Descargar CV
-            </motion.a>
-
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="/docs/SoyHenry.pdf"
-              download
-              className="flex items-center gap-2 px-6 py-3 rounded bg-emerald-600 hover:bg-emerald-700 text-white font-semibold shadow-lg"
-            >
-              <FileText size={18} /> Certificado Henry
             </motion.a>
           </div>
 

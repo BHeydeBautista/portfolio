@@ -74,14 +74,6 @@ export default function PortfolioShowcase() {
         transition={{ duration: 0.4 }}
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 relative z-10"
       >
-        {activeTab === "Certificates" && (
-          <>
-            {certificates.map((cert, idx) => (
-              <CertificateCard key={idx} {...cert} />
-            ))}
-          </>
-        )}
-
         {activeTab === "Projects" && (
           <>
             {projects.map((project, idx) => (
@@ -144,6 +136,14 @@ export default function PortfolioShowcase() {
                   </div>
                 </div>
               </motion.div>
+            ))}
+          </>
+        )}
+
+        {activeTab === "Certificates" && (
+          <>
+            {certificates.map((cert, idx) => (
+              <CertificateCard key={idx} {...cert} />
             ))}
           </>
         )}

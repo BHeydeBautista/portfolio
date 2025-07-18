@@ -3,8 +3,7 @@ import Contact from "@/components/Contact"
 import Footer from "@/components/Footer"
 import Intro from "@/components/Intro"
 import Navbar from "@/components/Navbar"
-import Projects from "@/components/Projects"
-import Skills from "@/components/Skills"
+import PortfolioShowcase from "@/components/PortfolioShowcase/PortfolioShowcase"
 import SpaceHero from "@/components/SpaceHero"
 
 export default function Home() {
@@ -15,8 +14,7 @@ export default function Home() {
         <Intro />
         <SpaceHero />
         <AboutMe />
-        <Skills />
-        <Projects />
+        <PortfolioShowcase />
         <Contact />
       </main>
       <Footer />

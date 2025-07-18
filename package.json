@@ -11,7 +11,7 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@radix-ui/react-icons": "^1.3.2",
-    "framer-motion": "^12.23.3",
+    "framer-motion": "^12.23.6",
     "lucide-react": "^0.525.0",
     "next": "15.3.5",
     "next-intl": "^4.3.4",
@@ -19,7 +19,12 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
-    "react-type-animation": "^3.2.0"
+    "react-parallax-tilt": "^1.7.300",
+    "react-tsparticles": "^2.12.2",
+    "react-type-animation": "^3.2.0",
+    "tsparticles": "^3.8.1",
+    "tsparticles-slim": "^2.12.0",
+    "typewriter-effect": "^2.22.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Download, FileText } from "lucide-react";
+import { Code2, GraduationCap, Globe } from "lucide-react";
 
 export default function AboutMe() {
   return (
@@ -9,7 +10,7 @@ export default function AboutMe() {
       id="about"
       className="relative z-10 py-20 px-6 md:px-16 bg-gradient-to-br from-slate-900 via-slate-950 to-black text-white font-mono overflow-hidden"
     >
-      {/* Fondo decorativo animado (blur + glow) */}
+      {/* Fondo decorativo animado */}
       <motion.div
         initial={{ opacity: 0.2 }}
         animate={{ opacity: 0.3 }}
@@ -39,23 +40,50 @@ export default function AboutMe() {
             />
           </div>
 
-          <div className="text-center">
-            <h2 className="text-xl font-semibold text-purple-400 mb-1">
-              Certificados
+          <div className="text-center w-full">
+            <h2 className="text-xl font-semibold text-purple-400 mb-8">
+              Mi Trayectoria
             </h2>
-            <div className="flex gap-3 justify-center">
-              <Image
-                src="/img/cert1.png"
-                alt="Certificado 1"
-                width={48}
-                height={48}
-              />
-              <Image
-                src="/img/cert2.png"
-                alt="Certificado 2"
-                width={48}
-                height={48}
-              />
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 px-4">
+              {/* Total Projects */}
+              <a
+                href="/projects"
+                className="group bg-slate-800 hover:bg-slate-700 transition-colors duration-300 rounded-xl p-6 shadow-lg flex flex-col items-center text-center gap-4 border border-slate-700 hover:border-purple-500"
+              >
+                <div className="bg-purple-500/20 p-4 rounded-full text-purple-400">
+                  <Code2 size={32} />
+                </div>
+                <p className="text-4xl font-bold text-white">4</p>
+                <p className="text-sm text-slate-400">Total Projects</p>
+                <p className="text-xs text-slate-500">Web & Mobile crafted</p>
+              </a>
+
+              {/* Certificates */}
+              <a
+                href="/certificates"
+                className="group bg-slate-800 hover:bg-slate-700 transition-colors duration-300 rounded-xl p-6 shadow-lg flex flex-col items-center text-center gap-4 border border-slate-700 hover:border-purple-500"
+              >
+                <div className="bg-purple-500/20 p-4 rounded-full text-purple-400">
+                  <GraduationCap size={32} />
+                </div>
+                <p className="text-4xl font-bold text-white">3</p>
+                <p className="text-sm text-slate-400">Certificates</p>
+                <p className="text-xs text-slate-500">Skills validated</p>
+              </a>
+
+              {/* Experience */}
+              <a
+                href="/experience"
+                className="group bg-slate-800 hover:bg-slate-700 transition-colors duration-300 rounded-xl p-6 shadow-lg flex flex-col items-center text-center gap-4 border border-slate-700 hover:border-purple-500"
+              >
+                <div className="bg-purple-500/20 p-4 rounded-full text-purple-400">
+                  <Globe size={32} />
+                </div>
+                <p className="text-4xl font-bold text-white">2</p>
+                <p className="text-sm text-slate-400">Years of Experience</p>
+                <p className="text-xs text-slate-500">Continuous journey</p>
+              </a>
             </div>
           </div>
         </motion.div>
@@ -112,7 +140,7 @@ export default function AboutMe() {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="/docs/CV_IgnacioMartinez.pdf"
+              href="/docs/CVBautistaHeyde.pdf"
               download
               className="flex items-center gap-2 px-6 py-3 rounded bg-purple-600 hover:bg-purple-700 text-white font-semibold shadow-lg"
             >
@@ -122,12 +150,27 @@ export default function AboutMe() {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="/docs/certificados.pdf"
+              href="/docs/SoyHenry.pdf"
               download
               className="flex items-center gap-2 px-6 py-3 rounded bg-emerald-600 hover:bg-emerald-700 text-white font-semibold shadow-lg"
             >
-              <FileText size={18} /> Ver certificados
+              <FileText size={18} /> Certificado Henry
             </motion.a>
+          </div>
+
+          {/* 📊 GitHub Stats sin ranking */}
+          <div className="mt-10">
+            <h2 className="text-xl font-semibold text-purple-400 mb-4 text-center">
+              📈 GitHub Stats
+            </h2>
+            <div className="flex justify-center">
+              <Image
+                src="https://github-readme-stats.vercel.app/api?username=BHeydeBautista&show_icons=true&theme=onedark&hide_rank=true"
+                alt="Estadísticas de GitHub"
+                width={500}
+                height={200}
+              />
+            </div>
           </div>
         </motion.div>
       </div>

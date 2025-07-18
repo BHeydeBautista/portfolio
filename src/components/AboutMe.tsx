@@ -154,11 +154,13 @@ export default function AboutMe() {
               📈 GitHub Stats
             </h2>
             <div className="flex justify-center">
-              <Image
+              <img
                 src="https://github-readme-stats.vercel.app/api?username=BHeydeBautista&show_icons=true&theme=onedark&hide_rank=true"
                 alt="Estadísticas de GitHub"
                 width={500}
                 height={200}
+                loading="lazy"
+                style={{ maxWidth: "100%", height: "auto" }}
               />
             </div>
           </div>

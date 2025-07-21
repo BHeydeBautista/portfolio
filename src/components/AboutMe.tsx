@@ -3,8 +3,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Download } from "lucide-react";
 import { Code2, GraduationCap, Globe } from "lucide-react";
+import { projects } from "@/data/projects";
+import { certificates } from "@/data/certificates";
 
 export default function AboutMe() {
+  const totalProjects = projects.length;
+  const totalCertificates = certificates.length;
+  const yearsExperience = 2; 
+
   return (
     <section
       id="about"
@@ -54,7 +60,7 @@ export default function AboutMe() {
                 <div className="bg-purple-500/20 p-4 rounded-full text-purple-400">
                   <Code2 size={32} />
                 </div>
-                <p className="text-4xl font-bold text-white">4</p>
+                <p className="text-4xl font-bold text-white">{totalProjects}</p>
                 <p className="text-sm text-slate-400">Proyecto Totales</p>
                 <p className="text-xs text-slate-500">Web & Mobile crafted</p>
               </a>
@@ -67,7 +73,7 @@ export default function AboutMe() {
                 <div className="bg-purple-500/20 p-4 rounded-full text-purple-400">
                   <GraduationCap size={32} />
                 </div>
-                <p className="text-4xl font-bold text-white">3</p>
+                <p className="text-4xl font-bold text-white">{totalCertificates}</p>
                 <p className="text-sm text-slate-400">Certificados</p>
                 <p className="text-xs text-slate-500">Skills validadas</p>
               </a>
@@ -80,7 +86,7 @@ export default function AboutMe() {
                 <div className="bg-purple-500/20 p-4 rounded-full text-purple-400">
                   <Globe size={32} />
                 </div>
-                <p className="text-4xl font-bold text-white">2</p>
+                <p className="text-4xl font-bold text-white">{yearsExperience}</p>
                 <p className="text-sm text-slate-400">Años y Experiencia</p>
                 <p className="text-xs text-slate-500">Viaje Continuo</p>
               </a>

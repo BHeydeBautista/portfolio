@@ -13,7 +13,7 @@ export default function TechGrid({
   const gridCols = 'grid-cols-[repeat(auto-fill,_minmax(140px,_1fr))]';
 
   return (
-    <div className="mb-16 w-full">
+    <div id="skills" className="mb-16 w-full">
       <h3 className="text-2xl font-bold text-purple-400 mb-8 text-center uppercase tracking-wider">
         {title}
       </h3>

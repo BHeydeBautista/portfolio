@@ -6,9 +6,8 @@ import { FaLinkedin, FaGithub, FaEnvelope, FaBars, FaTimes } from 'react-icons/f
 
 const navItems = [
   { name: 'Inicio', href: '#SpaceHero' },
-  { name: 'Skills', href: '#TechGrid' },
-  { name: 'Proyectos', href: '#Projects' },
-  { name: 'Contacto', href: '#Contact' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Proyectos', href: '#projects' },
 ];
 
 export default function Navbar() {
@@ -16,60 +15,80 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleMenu = () => setMenuOpen((v) => !v);
 
   return (
     <motion.nav
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 w-full z-50 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-slate-950/80 backdrop-blur-md border-b border-purple-700/30 shadow-md'
+          ? 'bg-slate-950/70 backdrop-blur-lg shadow-lg border-b border-purple-700/30'
           : 'bg-transparent'
-      } transition-all duration-300`}
+      }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link href="#SpaceHero" className="text-purple-400 text-lg font-bold tracking-wide hover:opacity-80 transition">
+        <Link
+          href="#SpaceHero"
+          className="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-300 bg-clip-text text-transparent drop-shadow"
+        >
           Bautista Heyde
         </Link>
 
         {/* Botón hamburguesa */}
         <button
           onClick={toggleMenu}
-          className="md:hidden text-yellow-400 text-2xl p-2"
-          aria-label="Toggle menu"
+          className="md:hidden text-yellow-400 text-2xl p-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-400"
+          aria-label="Abrir menú"
         >
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
         {/* Navegación escritorio */}
-        <div className="hidden md:flex items-center gap-6 text-slate-300 text-[15px] font-medium">
+        <div className="hidden md:flex items-center gap-2 text-[15px] font-medium">
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="hover:text-purple-400 transition duration-200"
+              className="relative px-3 py-1 text-slate-200 hover:text-purple-400 transition group"
             >
-              {item.name}
+              <span>{item.name}</span>
+              <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-yellow-300 rounded group-hover:w-full transition-all duration-300"></span>
             </a>
           ))}
 
           {/* Redes */}
-          <div className="flex gap-3 ml-4">
-            <a href="mailto:tucorreo@ejemplo.com" className="bg-slate-800 hover:bg-slate-700 p-2 rounded-full text-purple-400 transition hover:scale-110">
+          <div className="flex gap-2 ml-4">
+            <a
+              href="mailto:bautistaheyde@hotmail.com"
+              className="p-2 rounded-full bg-white/10 hover:bg-purple-600/80 text-purple-300 hover:text-white transition shadow"
+              aria-label="Email"
+            >
               <FaEnvelope size={18} />
             </a>
-            <a href="https://github.com/bautistaheyde" target="_blank" className="bg-slate-800 hover:bg-slate-700 p-2 rounded-full text-purple-400 transition hover:scale-110">
+            <a
+              href="https://github.com/BHeydeBautista"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-white/10 hover:bg-purple-600/80 text-purple-300 hover:text-white transition shadow"
+              aria-label="GitHub"
+            >
               <FaGithub size={18} />
             </a>
-            <a href="https://linkedin.com/in/bautistaheyde" target="_blank" className="bg-slate-800 hover:bg-slate-700 p-2 rounded-full text-purple-400 transition hover:scale-110">
+            <a
+              href="https://linkedin.com/in/bautista-heyde"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-white/10 hover:bg-purple-600/80 text-purple-300 hover:text-white transition shadow"
+              aria-label="LinkedIn"
+            >
               <FaLinkedin size={18} />
             </a>
           </div>
@@ -77,53 +96,81 @@ export default function Navbar() {
           {/* Botón Contactar */}
           <a
             href="#contact"
-            className="ml-4 px-4 py-2 rounded-md bg-purple-600 hover:bg-purple-700 text-white font-semibold shadow transition duration-200"
+            className="ml-4 px-5 py-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-yellow-400 hover:to-purple-500 text-white font-semibold shadow-lg transition"
           >
             Contactar
           </a>
         </div>
       </div>
 
-      {/* Navegación móvil */}
+      {/* Overlay y menú móvil */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="md:hidden bg-slate-950 text-purple-300 px-6 py-4 flex flex-col gap-4 border-t border-purple-700/30"
-          >
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={() => setMenuOpen(false)}
-                className="text-lg hover:text-purple-400 transition"
-              >
-                {item.name}
-              </a>
-            ))}
-
-            <div className="flex gap-3 mt-4">
-              <a href="mailto:tucorreo@ejemplo.com" className="bg-slate-800 p-3 rounded-full text-purple-400 hover:scale-110 transition">
-                <FaEnvelope size={20} />
-              </a>
-              <a href="https://github.com/bautistaheyde" className="bg-slate-800 p-3 rounded-full text-purple-400 hover:scale-110 transition">
-                <FaGithub size={20} />
-              </a>
-              <a href="https://linkedin.com/in/bautistaheyde" className="bg-slate-800 p-3 rounded-full text-purple-400 hover:scale-110 transition">
-                <FaLinkedin size={20} />
-              </a>
-            </div>
-
-            <a
-              href="#contact"
-              onClick={() => setMenuOpen(false)}
-              className="mt-4 bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded-md text-white font-medium shadow-md text-center transition"
+          <>
+            {/* Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black z-40"
+              onClick={toggleMenu}
+            />
+            {/* Menú */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              className="fixed top-0 right-0 w-72 h-full bg-slate-950/95 backdrop-blur-lg z-50 shadow-2xl flex flex-col gap-6 px-8 py-10"
             >
-              Contactar
-            </a>
-          </motion.div>
+              <div className="flex flex-col gap-4">
+                {navItems.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="text-lg text-slate-200 hover:text-purple-400 transition font-semibold py-2"
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+              <div className="flex gap-4 mt-8">
+                <a
+                  href="mailto:bautistaheyde@hotmail.com"
+                  className="p-3 rounded-full bg-white/10 hover:bg-purple-600/80 text-purple-300 hover:text-white transition shadow"
+                  aria-label="Email"
+                >
+                  <FaEnvelope size={22} />
+                </a>
+                <a
+                  href="https://github.com/BHeydeBautista"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-white/10 hover:bg-purple-600/80 text-purple-300 hover:text-white transition shadow"
+                  aria-label="GitHub"
+                >
+                  <FaGithub size={22} />
+                </a>
+                <a
+                  href="https://linkedin.com/in/bautista-heyde"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-white/10 hover:bg-purple-600/80 text-purple-300 hover:text-white transition shadow"
+                  aria-label="LinkedIn"
+                >
+                  <FaLinkedin size={22} />
+                </a>
+              </div>
+              <a
+                href="#contact"
+                onClick={() => setMenuOpen(false)}
+                className="mt-8 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-yellow-400 hover:to-purple-500 px-5 py-2 rounded-lg text-white font-semibold shadow-lg text-center transition"
+              >
+                Contactar
+              </a>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.nav>

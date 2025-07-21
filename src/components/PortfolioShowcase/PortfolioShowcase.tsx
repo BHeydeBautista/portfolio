@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Code2, BadgeCheck, Atom } from "lucide-react";
 import Image from "next/image";
@@ -13,6 +13,27 @@ const tabs = ["Projects", "Certificates", "Tech Stack"];
 
 export default function PortfolioShowcase() {
   const [activeTab, setActiveTab] = useState("Certificates");
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === "#skills") {
+        setActiveTab("Tech Stack");
+        setTimeout(() => {
+          document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+      if (hash === "#projects") {
+        setActiveTab("Projects");
+        setTimeout(() => {
+          document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    };
+    window.addEventListener("hashchange", handleHashChange);
+    handleHashChange(); // Ejecuta en el primer render
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
 
   return (
     <section

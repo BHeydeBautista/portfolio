@@ -61,6 +61,7 @@ export default function SpaceHero() {
 
           {/* Fondo estelar */}
           <div
+            id="SpaceHero"
             className="absolute inset-0 z-0"
             style={{
               backgroundImage: "url(/img/stars.jpg)",
@@ -113,7 +114,13 @@ export default function SpaceHero() {
 
               {/* Tech stack badges */}
               <div className="flex flex-wrap gap-3 mb-6">
-                {["React", "Next.js", "NestJS", "PostgreSQL", "otras más abajo"].map((tech) => (
+                {[
+                  "React",
+                  "Next.js",
+                  "NestJS",
+                  "PostgreSQL",
+                  "otras más abajo",
+                ].map((tech) => (
                   <span
                     key={tech}
                     className="px-4 py-1 rounded-full bg-white/10 text-white/80 text-sm font-medium backdrop-blur-sm border border-white/20"

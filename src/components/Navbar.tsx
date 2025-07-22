@@ -3,16 +3,12 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaLinkedin, FaGithub, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
-
-const navItems = [
-  { name: 'Inicio', href: '#SpaceHero' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Proyectos', href: '#projects' },
-];
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { language, setLanguage } = useLanguage();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -21,6 +17,15 @@ export default function Navbar() {
   }, []);
 
   const toggleMenu = () => setMenuOpen((v) => !v);
+
+  // Traducciones de los textos de navegación
+  const navItems = [
+    { name: language === "es" ? "Inicio" : "Home", href: "#SpaceHero" },
+    { name: language === "es" ? "Skills" : "Skills", href: "#skills" },
+    { name: language === "es" ? "Proyectos" : "Projects", href: "#projects" },
+  ];
+
+  const contactText = language === "es" ? "Contactar" : "Contact";
 
   return (
     <motion.nav
@@ -46,7 +51,7 @@ export default function Navbar() {
         <button
           onClick={toggleMenu}
           className="md:hidden text-yellow-400 text-2xl p-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-400"
-          aria-label="Abrir menú"
+          aria-label={language === "es" ? "Abrir menú" : "Open menu"}
         >
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
@@ -93,12 +98,28 @@ export default function Navbar() {
             </a>
           </div>
 
+          {/* Selector de idioma */}
+          <div className="flex gap-2 ml-4">
+            <button
+              onClick={() => setLanguage("es")}
+              className={`px-2 py-1 rounded ${language === "es" ? "bg-purple-500 text-white" : "bg-slate-800 text-slate-300"}`}
+            >
+              ES
+            </button>
+            <button
+              onClick={() => setLanguage("en")}
+              className={`px-2 py-1 rounded ${language === "en" ? "bg-purple-500 text-white" : "bg-slate-800 text-slate-300"}`}
+            >
+              EN
+            </button>
+          </div>
+
           {/* Botón Contactar */}
           <a
             href="#contact"
             className="ml-4 px-5 py-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-yellow-400 hover:to-purple-500 text-white font-semibold shadow-lg transition"
           >
-            Contactar
+            {contactText}
           </a>
         </div>
       </div>
@@ -162,12 +183,27 @@ export default function Navbar() {
                   <FaLinkedin size={22} />
                 </a>
               </div>
+              {/* Selector de idioma en menú móvil */}
+              <div className="flex gap-2 mt-8">
+                <button
+                  onClick={() => setLanguage("es")}
+                  className={`px-3 py-1 rounded ${language === "es" ? "bg-purple-500 text-white" : "bg-slate-800 text-slate-300"}`}
+                >
+                  ES
+                </button>
+                <button
+                  onClick={() => setLanguage("en")}
+                  className={`px-3 py-1 rounded ${language === "en" ? "bg-purple-500 text-white" : "bg-slate-800 text-slate-300"}`}
+                >
+                  EN
+                </button>
+              </div>
               <a
                 href="#contact"
                 onClick={() => setMenuOpen(false)}
                 className="mt-8 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-yellow-400 hover:to-purple-500 px-5 py-2 rounded-lg text-white font-semibold shadow-lg text-center transition"
               >
-                Contactar
+                {contactText}
               </a>
             </motion.div>
           </>

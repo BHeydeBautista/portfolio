@@ -3,11 +3,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/i18n";
 
 export default function SpaceHero() {
   const [mounted, setMounted] = useState(false);
   const [showStar, setShowStar] = useState(false);
   const [windowSize, setWindowSize] = useState({ width: 1280, height: 800 });
+
+  const { language } = useLanguage();
+  const t = translations[language].intro;
 
   useEffect(() => {
     setWindowSize({ width: window.innerWidth, height: window.innerHeight });
@@ -84,22 +89,17 @@ export default function SpaceHero() {
               className="flex flex-col items-start text-left max-w-xl pt-[10vh] md:pt-[20vh]"
             >
               <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-1 font-sans">
-                Full Stack
+                {t.name}
               </h1>
               <h2 className="text-4xl md:text-5xl font-bold mb-4 font-sans text-[#a855f7]">
-                Developer
+                {t.title}
               </h2>
-
+              <div className="text-base md:text-lg font-semibold mb-2 text-white/80">
+                {t.subtitle}
+              </div>
               {/* Animación de typing */}
               <TypeAnimation
-                sequence={[
-                  "Computer Science Student",
-                  2000,
-                  "Frontend & Backend Developer",
-                  2000,
-                  "React / Next / Nest / PostgreSQL",
-                  2000,
-                ]}
+                sequence={t.typewriter.flatMap((text) => [text, 2000])}
                 wrapper="span"
                 speed={50}
                 repeat={Infinity}
@@ -108,19 +108,12 @@ export default function SpaceHero() {
 
               {/* Descripción */}
               <p className="text-sm md:text-base text-white/80 leading-relaxed mb-6 max-w-md font-medium">
-                Mejorando experiencias digitales que sean fluidas, escalables y
-                diseñadas para impresionar.
+                {t.description}
               </p>
 
               {/* Tech stack badges */}
               <div className="flex flex-wrap gap-3 mb-6">
-                {[
-                  "React",
-                  "Next.js",
-                  "NestJS",
-                  "PostgreSQL",
-                  "otras más abajo",
-                ].map((tech) => (
+                {t.techs.map((tech) => (
                   <span
                     key={tech}
                     className="px-4 py-1 rounded-full bg-white/10 text-white/80 text-sm font-medium backdrop-blur-sm border border-white/20"
@@ -136,13 +129,13 @@ export default function SpaceHero() {
                   href="#PortfolioShowcase"
                   className="px-5 py-2 rounded-md font-semibold text-sm bg-[#0f172a] text-white shadow-[0_0_15px_#a855f7] hover:bg-[#a855f7]/20 transition"
                 >
-                  Proyectos
+                  {t.projectsBtn}
                 </a>
                 <a
                   href="#Contact"
                   className="px-5 py-2 rounded-md font-semibold text-sm border border-white/30 text-white/80 hover:bg-white/10 transition"
                 >
-                  Contacto
+                  {t.contactBtn}
                 </a>
               </div>
             </motion.div>
@@ -162,7 +155,7 @@ export default function SpaceHero() {
             >
               <Image
                 src="/img/astronaut.png"
-                alt="Astronauta flotando"
+                alt={t.astronautAlt}
                 width={400}
                 height={400}
                 priority

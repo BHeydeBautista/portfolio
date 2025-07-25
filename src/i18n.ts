@@ -59,6 +59,12 @@ export const translations = {
       title: "¿Conectamos?",
       description:
         "Elegí la forma que más te convenga para contactarme — estoy disponible por correo, redes profesionales o directamente por WhatsApp.",
+      methods: {
+        email: "Envíame un correo directo",
+        linkedin: "Conectemos en LinkedIn",
+        github: "Mirá mis proyectos",
+        whatsapp: "Escribime directo al WhatsApp",
+      },
     },
   },
   en: {
@@ -117,10 +123,16 @@ export const translations = {
         repo: "Repository",
       },
     },
-  },
-  contacto: {
-    title: "Let’s Connect!",
-    description:
-      "Choose the way that suits you best to reach out — I’m available via email, professional networks, or directly through WhatsApp.",
+    contacto: {
+      title: "Let’s Connect!",
+      description:
+        "Choose the way that suits you best to reach out — I’m available via email, professional networks, or directly through WhatsApp.",
+      methods: {
+        email: "Send me an email",
+        linkedin: "Connect with me on LinkedIn",
+        github: "Check out my projects",
+        whatsapp: "Message me directly on WhatsApp",
+      },
+    },
   },
 };

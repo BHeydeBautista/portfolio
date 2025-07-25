@@ -1,4 +1,5 @@
 'use client'
+import { useTranslation } from '@/hooks/useTranslation';
 import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp } from 'react-icons/fa'
 
@@ -34,6 +35,7 @@ const contacts = [
 ]
 
 export default function Contact() {
+  const { t } = useTranslation();
   return (
     <section
       id="contact"

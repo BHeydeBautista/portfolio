@@ -41,8 +41,25 @@ export const translations = {
         "Apasionado del código",
       ],
     },
-
-    // ...más secciones...
+    portfolio: {
+      title: "Exposición de Portfolio",
+      description:
+        "Explorá mi recorrido a través de proyectos, certificaciones y stack tecnológico. Cada sección representa un hito en mi aprendizaje.",
+      tabs: {
+        projects: "Proyectos",
+        certificates: "Certificados",
+        stack: "Tecnologías",
+      },
+      buttons: {
+        viewProject: "Ver Proyecto",
+        repo: "Repositorio",
+      },
+    },
+    contacto: {
+      title: "¿Conectamos?",
+      description:
+        "Elegí la forma que más te convenga para contactarme — estoy disponible por correo, redes profesionales o directamente por WhatsApp.",
+    },
   },
   en: {
     intro: {
@@ -86,6 +103,24 @@ export const translations = {
         "Code Enthusiast",
       ],
     },
-    // ...más secciones...
+    portfolio: {
+      title: "Portfolio Showcase",
+      description:
+        "Explore my journey through projects, certifications and tech stack. Each section represents a milestone in my learning.",
+      tabs: {
+        projects: "Projects",
+        certificates: "Certificates",
+        stack: "Tech Stack",
+      },
+      buttons: {
+        viewProject: "View Project",
+        repo: "Repository",
+      },
+    },
+  },
+  contacto: {
+    title: "Let’s Connect!",
+    description:
+      "Choose the way that suits you best to reach out — I’m available via email, professional networks, or directly through WhatsApp.",
   },
 };

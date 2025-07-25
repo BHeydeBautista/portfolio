@@ -8,6 +8,7 @@ import { certificates } from "@/data/certificates";
 import CertificateCard from "./CertificateCard";
 import { skillCategories } from "@/data/skills";
 import TechGrid from "./TechGrid";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const tabs = ["Projects", "Certificates", "Tech Stack"];
 
@@ -35,6 +36,8 @@ export default function PortfolioShowcase() {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
+  const { t } = useTranslation();
+
   return (
     <section
       id="portfolio"
@@ -58,11 +61,10 @@ export default function PortfolioShowcase() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Portfolio Showcase
+          {t("portfolio.title")}
         </motion.h2>
         <p className="text-slate-300 mt-4 text-sm md:text-base max-w-2xl mx-auto">
-          Explorá mi recorrido a través de proyectos, certificaciones y stack
-          tecnológico. Cada sección representa un hito en mi aprendizaje.
+          {t("portfolio.description")}
         </p>
       </div>
 

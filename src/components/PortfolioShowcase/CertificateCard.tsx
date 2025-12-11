@@ -16,17 +16,18 @@ export default function CertificateCard({ title, image, pdf }: Props) {
   return (
     <>
       <div
-        className="cursor-pointer group relative"
+        className="cursor-pointer group relative h-full flex flex-col"
         onClick={() => setIsOpen(true)}
       >
-        <Image
-          src={image}
-          alt={title}
-          width={500}
-          height={300}
-          className="rounded-xl border border-slate-700 shadow-md group-hover:opacity-80 transition"
-        />
-        <p className="mt-2 text-center text-sm text-slate-300">{title}</p>
+        <div className="relative w-full aspect-video rounded-xl border border-slate-700 shadow-md overflow-hidden">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="rounded-xl object-cover group-hover:opacity-80 transition"
+          />
+        </div>
+        <p className="mt-2 text-center text-sm text-slate-300 flex-1">{title}</p>
       </div>
 
       <AnimatePresence>

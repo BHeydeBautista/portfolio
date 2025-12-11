@@ -16,9 +16,11 @@ import { Menu } from "@headlessui/react";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const { language, setLanguage } = useLanguage();
 
   useEffect(() => {
+    setIsClient(true);
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
@@ -45,6 +47,7 @@ export default function Navbar() {
           ? "bg-slate-950/70 backdrop-blur-lg shadow-lg border-b border-purple-700/30"
           : "bg-transparent"
       }`}
+      suppressHydrationWarning
     >
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo */}
@@ -60,22 +63,27 @@ export default function Navbar() {
           onClick={toggleMenu}
           className="md:hidden text-yellow-400 text-2xl p-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-400"
           aria-label={language === "es" ? "Abrir menú" : "Open menu"}
+          suppressHydrationWarning
         >
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
         {/* Navegación escritorio */}
-        <div className="hidden md:flex items-center gap-2 text-[15px] font-medium">
-          {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="relative px-3 py-1 text-slate-200 hover:text-purple-400 transition group"
-            >
-              <span>{item.name}</span>
-              <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-yellow-300 rounded group-hover:w-full transition-all duration-300"></span>
-            </a>
-          ))}
+        <div
+          className="hidden md:flex items-center gap-2 text-[15px] font-medium"
+          suppressHydrationWarning
+        >
+          {isClient &&
+            navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="relative px-3 py-1 text-slate-200 hover:text-purple-400 transition group"
+              >
+                <span>{item.name}</span>
+                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-yellow-300 rounded group-hover:w-full transition-all duration-300"></span>
+              </a>
+            ))}
 
           {/* Redes */}
           <div className="flex gap-2 ml-4">
@@ -107,70 +115,74 @@ export default function Navbar() {
           </div>
 
           {/* Selector de idioma */}
-          <Menu as="div" className="relative ml-4 z-50 hidden md:block">
-            {({ open }) => (
-              <>
-                <Menu.Button className="flex items-center gap-2 px-3 py-1 rounded bg-slate-800 hover:bg-purple-600 text-slate-200 hover:text-white transition focus:outline-none focus:ring-2 focus:ring-purple-500">
-                  <FaGlobe className="text-purple-300" />
-                  <span>{language === "es" ? "Español" : "English"}</span>
-                  <svg
-                    className={`w-3 h-3 transform ${
-                      open ? "rotate-180" : "rotate-0"
-                    } transition-transform`}
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.584l3.71-4.354a.75.75 0 011.13.976l-4.25 5a.75.75 0 01-1.13 0l-4.25-5a.75.75 0 01.02-1.06z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </Menu.Button>
+          {isClient && (
+            <Menu as="div" className="relative ml-4 z-50 hidden md:block">
+              {({ open }) => (
+                <>
+                  <Menu.Button className="flex items-center gap-2 px-3 py-1 rounded bg-slate-800 hover:bg-purple-600 text-slate-200 hover:text-white transition focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <FaGlobe className="text-purple-300" />
+                    <span>{language === "es" ? "Español" : "English"}</span>
+                    <svg
+                      className={`w-3 h-3 transform ${
+                        open ? "rotate-180" : "rotate-0"
+                      } transition-transform`}
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.584l3.71-4.354a.75.75 0 011.13.976l-4.25 5a.75.75 0 01-1.13 0l-4.25-5a.75.75 0 01.02-1.06z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </Menu.Button>
 
-                <Menu.Items className="absolute right-0 mt-2 w-32 origin-top-right bg-slate-900 border border-purple-600/30 rounded shadow-lg focus:outline-none">
-                  <div className="py-1">
-                    <Menu.Item>
-                      {({ active }) => (
-                        <button
-                          onClick={() => setLanguage("es")}
-                          className={`w-full px-4 py-2 text-left text-sm ${
-                            active
-                              ? "bg-purple-600 text-white"
-                              : "text-slate-200"
-                          }`}
-                        >
-                          🇪🇸 Español
-                        </button>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <button
-                          onClick={() => setLanguage("en")}
-                          className={`w-full px-4 py-2 text-left text-sm ${
-                            active
-                              ? "bg-purple-600 text-white"
-                              : "text-slate-200"
-                          }`}
-                        >
-                          🇺🇸 English
-                        </button>
-                      )}
-                    </Menu.Item>
-                  </div>
-                </Menu.Items>
-              </>
-            )}
-          </Menu>
+                  <Menu.Items className="absolute right-0 mt-2 w-32 origin-top-right bg-slate-900 border border-purple-600/30 rounded shadow-lg focus:outline-none">
+                    <div className="py-1">
+                      <Menu.Item>
+                        {({ active }) => (
+                          <button
+                            onClick={() => setLanguage("es")}
+                            className={`w-full px-4 py-2 text-left text-sm ${
+                              active
+                                ? "bg-purple-600 text-white"
+                                : "text-slate-200"
+                            }`}
+                          >
+                            🇪🇸 Español
+                          </button>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <button
+                            onClick={() => setLanguage("en")}
+                            className={`w-full px-4 py-2 text-left text-sm ${
+                              active
+                                ? "bg-purple-600 text-white"
+                                : "text-slate-200"
+                            }`}
+                          >
+                            🇺🇸 English
+                          </button>
+                        )}
+                      </Menu.Item>
+                    </div>
+                  </Menu.Items>
+                </>
+              )}
+            </Menu>
+          )}
 
           {/* Botón Contactar */}
-          <a
-            href="#contact"
-            className="ml-4 px-5 py-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-yellow-400 hover:to-purple-500 text-white font-semibold shadow-lg transition"
-          >
-            {contactText}
-          </a>
+          {isClient && (
+            <a
+              href="#contact"
+              className="ml-4 px-5 py-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-yellow-400 hover:to-purple-500 text-white font-semibold shadow-lg transition"
+            >
+              {contactText}
+            </a>
+          )}
         </div>
       </div>
 

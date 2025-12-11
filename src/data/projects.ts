@@ -46,14 +46,31 @@ export const projects = [
     repo: 'https://github.com/Servicios-Libre/backend',
   },
   {
-    title: 'Moro Abogados — Demo',
+    title: 'Moro Abogados - FrontEnd',
     description:
-      'Diseño moderno para actualizar el sitio del estudio jurídico Moro Abogados. Construido con Next.js 15 y TypeScript. Incluye una estructura clara, layout responsivo y estilos refinados. Despliegue próximo en Vercel.',
+      'Diseño moderno para actualizar el sitio del estudio jurídico Moro Abogados. Construido con Next.js 16 y TypeScript. Incluye una estructura clara, layout responsivo y estilos refinados. Despliegue próximo en Vercel.',
     image: '/projects/moroabogados.jpg',
     stackName: 'Next.js + TailwindCSS',
     stack: [SiNextdotjs, SiReact, SiTypescript, SiTailwindcss, SiVercel],
-    link: '',
+    link: 'https://www.moroabogados.com.ar/',
     repo: 'https://github.com/BHeydeBautista/Moro-Abogados',
+  },
+  {
+    title: 'Moro Abogados — Backend',
+    description:
+      'Diseño moderno para actualizar el sitio del estudio jurídico Moro Abogados. Construido con Next.js 15 y TypeScript. Incluye una estructura clara, layout responsivo y estilos refinados. Despliegue próximo en Vercel.',
+    image: '/projects/moroabogados.jpg',
+    stackName: 'NestJs + TypeScript',
+    stack: [
+      SiNestjs,
+      SiTypescript,
+      SiPostgresql,
+      SiTypeorm,
+      SiSocketdotio,
+      SiCloudinary,
+    ],
+    link: 'https://moroabogados-backend-production.up.railway.app/',
+    repo: 'https://github.com/BHeydeBautista/MoroAbogados-Backend',
   },
   {
     title: 'Ecommerce M4 Proyecto Integrador — Backend API',

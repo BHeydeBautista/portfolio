@@ -162,11 +162,12 @@ export default function AboutMe() {
             </h2>
             <div className="flex justify-center">
               <Image
-                src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api?username=BHeydeBautista&show_icons=true&theme=onedark&hide_rank=true"
+                src="https://github-readme-stats.vercel.app/api?username=BHeydeBautista&show_icons=true&theme=onedark&hide_rank=true"
                 alt="GitHub Stats"
                 width={500}
                 height={200}
                 loading="lazy"
+                unoptimized
               />
             </div>
           </div>

@@ -148,7 +148,7 @@ export default function AboutMe() {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="/docs/CVBautistaHeyde.pdf"
+              href="/docs/CV Bautista Heyde.pdf"
               download
               className="flex items-center gap-2 px-6 py-3 rounded bg-purple-600 hover:bg-purple-700 text-white font-semibold shadow-lg"
             >

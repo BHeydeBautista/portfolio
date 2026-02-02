@@ -105,4 +105,15 @@ export const projects = [
     link: "",
     repo: "https://github.com/BHeydeBautista/Login-And-Register-FrontEnd",
   },
+  {
+    title:
+      "Vuelta a la Isla Curupí",
+    description:
+      "Pryoyecto para la institución Atlético Echagüe Club",
+    image: "/projects/curupi.png",
+    stackName: "NextJS + TailwindCSS",
+    stack: [SiNextdotjs, SiReact, SiTypescript, SiTailwindcss, SiVercel, SiFramer],
+    link: "https://aec-master.vercel.app/",
+    repo: "https://github.com/BHeydeBautista/Login-And-Register-FrontEnd",
+  },
 ];
